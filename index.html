@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>password generate</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div id="header">
+        <h1>Gerador de senhas</h1>
+        <p>utlize nosso gerador online para criar uma senha forte e segura.</p>
+    </div>
+    <div id="main">
+
+        <input type="text" name="password" id="password" />
+
+        <input 
+        type="range" 
+        name="size" 
+        id="size"
+        value="16"
+        min="4"
+        max="64">
+
+        <button id="copyButton">Copiar senha</button>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
