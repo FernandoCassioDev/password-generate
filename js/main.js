@@ -2,8 +2,8 @@ let PasswordLength = 16;
 
 const inputEl = document.querySelector("#password");
 
-const buttonHTML = document.querySelector('#copyButton')
-
+const buttonHTML = document.querySelector("#copyButton");
+const copySymbol = document.querySelector("#copySymbol");
 
 //gera as senhas
 function generatePassword() {
@@ -19,31 +19,28 @@ function generatePassword() {
     password += chars.substring(randomNumber, randomNumber + 1);
   }
 
-
   inputEl.value = password;
 }
 
 //função para fazer o botão copiar o password
-function copy(){
+function copy() {
+  navigator.clipboard.writeText(inputEl.value);
 
-    navigator.clipboard.writeText(inputEl.value)
-
-    buttonHTML.innerHTML = 'copiado!'
+  buttonHTML.innerHTML = "copiado!";
 }
 
 //implementa a função do range
 const PasswordLengthEl = document.querySelector("#size");
 PasswordLengthEl.addEventListener("input", function () {
   PasswordLength = PasswordLengthEl.value;
-  
-  generatePassword()
+
+  generatePassword();
 });
 
-//adiciona o evento de cópia ao botão do html
-buttonHTML.addEventListener("click", copy)
+//adiciona o evento de cópia ao botão e simbolo do html
+buttonHTML.addEventListener("click", copy);
+copySymbol.addEventListener("click", copy);
 
 //mostra ao usuário que a senha foi copiada
-
-
 
 generatePassword();

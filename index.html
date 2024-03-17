@@ -4,28 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>password generate</title>
-    <link rel="stylesheet" href="./css/main.css">
+
+    <!--css padrão-->
     <link rel="stylesheet" href="./css/reset.css">
+
+    <!--css principal-->
+    <link rel="stylesheet" href="./css/main.css">
+
+    <!--fonte-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="header">
-        <h1>Gerador de senhas</h1>
-        <p>utlize nosso gerador online para criar uma senha forte e segura.</p>
-    </div>
-    <div id="main">
-
-        <input type="text" name="password" id="password" />
-
-        <input 
-        type="range" 
-        name="size" 
-        id="size"
-        value="16"
-        min="4"
-        max="64">
-
-        <button id="copyButton">Copiar senha</button>
-    </div>
+    <main>
+        <section class="hero">
+            <h1 class="title">Gerador de senhas</h1>
+            <p class="subtitle">utlize nosso gerador online para criar uma senha forte e segura.</p>
+        </section>
+        <section class="box">
+            <div class="password">
+                <div class="text">
+                    <input type="text" name="password" id="password" />
+                </div>
+                <div class="actions">
+                    <button id="copySymbol">
+                        <img src="./assets/copy.svg" alt="copy password button" width="42">
+                    </button>
+                    <button id="renew">
+                        <img src="./assets/renew.svg" alt="build a new password button" width="42">
+                    </button>
+                </div>
+            </div>
+            <input
+                type="range"
+                name="size"
+                id="size"
+                value="16"
+                min="4"
+                max="64">
+            <button id="copyButton">Copiar senha</button>
+        </section>
+    </main>
     <script src="./js/main.js"></script>
 </body>
 </html>
