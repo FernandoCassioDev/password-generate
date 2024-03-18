@@ -36,15 +36,49 @@
                     </button>
                 </div>
             </div>
-            <input
-                type="range"
-                name="size"
-                id="size"
-                value="16"
-                min="4"
-                max="64">
-            <button id="copyButton">Copiar senha</button>
+            <div class="security-indicator">
+                <div id="security-indicator__bar" class="bar" style="width: 90%"></div>
+            </div>
         </section>
+
+        <section class="bar customize">
+            <h3 class="title">Personalizar</h3>
+            <div class="actions">
+                <div class="password-lenght">
+                    <p>tamanho:
+                        <span id="password-lenght-text">
+                            16
+                        </span>
+                    </p>
+                    <input
+                    type="range"
+                    name="size"
+                    id="size"
+                    value="16"
+                    min="4"
+                    max="64">
+                </div>
+                <div class="config">
+                    <label class="checkbox-container">
+                        <span class="text">Maiúsculas</span>
+                        <input type="checkbox" name="" id="upperCase-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <span class="text">Números</span>
+                        <input type="checkbox" name="" id="Numbers-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <span class="text">Símbolos</span>
+                        <input type="checkbox" name="" id="Symbols-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+            <button id="copyButton">Copiar senha</button>
     </main>
     <script src="./js/main.js"></script>
 </body>
