@@ -1,6 +1,9 @@
 const upperCaseCheckEl = document.querySelector("#UpperCase-check");
 const numbersCheckEl = document.querySelector("#Numbers-check");
 const symbolCheckEl = document.querySelector("#Symbols-check");
+const securityIndicatorBarEl = document.querySelector(
+  "#security-indicator-bar"
+);
 
 let PasswordLength = 16;
 
@@ -37,6 +40,38 @@ function generatePassword() {
   inputEl.value = password;
 }
 
+function calculateQuality() {
+  const percent = Math.round(
+    (PasswordLength / 64) * 100 * 25 +
+      (upperCaseCheckEl.checked ? 15 : 0) +
+      (numbersCheckEl.checked ? 25 : 0) +
+      (symbolCheckEl.checked ? 35 : 0)
+  );
+
+  securityIndicatorBarEl.style.width = `${percent}%`;
+
+  if (percent > 69) {
+    securityIndicatorBarEl.classList.remove("critical");
+    securityIndicatorBarEl.classList.remove("warning");
+    securityIndicatorBarEl.classList.add("safe");
+  } else if (percent > 50) {
+    securityIndicatorBarEl.classList.remove("critical");
+    securityIndicatorBarEl.classList.add("warning");
+    securityIndicatorBarEl.classList.remove("safe");
+  } else {
+    securityIndicatorBarEl.classList.add("critical");
+    securityIndicatorBarEl.classList.remove("warning");
+    securityIndicatorBarEl.classList.remove("safe");
+  }
+
+  if(percent >= 100){
+    securityIndicatorBarEl.classList.add("completed")
+  }else{
+    securityIndicatorBarEl.classList.remove("completed")
+
+  }
+}
+
 //função para fazer o botão copiar o password
 function copy() {
   navigator.clipboard.writeText(inputEl.value);
@@ -51,6 +86,9 @@ PasswordLengthEl.addEventListener("input", function () {
   PasswordLength = PasswordLengthEl.value;
 
   generatePassword();
+
+  //pega o contador e mostra o tamanho da senha
+  document.querySelector("#password-lenght-text").innerText = PasswordLength;
 });
 
 upperCaseCheckEl.addEventListener("click", generatePassword);
