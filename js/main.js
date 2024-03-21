@@ -38,11 +38,14 @@ function generatePassword() {
   }
 
   inputEl.value = password;
+
+  calculateQuality();
+  calculateFontSize();
 }
 
 function calculateQuality() {
   const percent = Math.round(
-    (PasswordLength / 64) * 100 * 25 +
+    (PasswordLength / 64) * 25 +
       (upperCaseCheckEl.checked ? 15 : 0) +
       (numbersCheckEl.checked ? 25 : 0) +
       (symbolCheckEl.checked ? 35 : 0)
@@ -64,11 +67,30 @@ function calculateQuality() {
     securityIndicatorBarEl.classList.remove("safe");
   }
 
-  if(percent >= 100){
-    securityIndicatorBarEl.classList.add("completed")
-  }else{
-    securityIndicatorBarEl.classList.remove("completed")
+  if (percent >= 100) {
+    securityIndicatorBarEl.classList.add("completed");
+  } else {
+    securityIndicatorBarEl.classList.remove("completed");
+  }
+}
 
+function calculateFontSize() {
+  if (PasswordLength > 45) {
+    inputEl.classList.remove("font-sm");
+    inputEl.classList.remove("font-xs");
+    inputEl.classList.add("font-xxs");
+  } else if (PasswordLength > 32) {
+    inputEl.classList.remove("font-sm");
+    inputEl.classList.remove("font-xxs");
+    inputEl.classList.add("font-xs");
+  } else if (PasswordLength > 22) {
+    inputEl.classList.remove("font-xs");
+    inputEl.classList.remove("font-xxs");
+    inputEl.classList.add("font-sm");
+  } else {
+    inputEl.classList.remove("font-xs");
+    inputEl.classList.remove("font-xxs");
+    inputEl.classList.remove("font-sm");
   }
 }
 
@@ -98,5 +120,7 @@ symbolCheckEl.addEventListener("click", generatePassword);
 //adiciona o evento de cópia ao botão e simbolo do html
 buttonHTML.addEventListener("click", copy);
 copySymbol.addEventListener("click", copy);
+
+document.querySelector("#renew").addEventListener("click", generatePassword);
 
 generatePassword();
